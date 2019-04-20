@@ -37,7 +37,7 @@ session = Session(engine)
 
 @app.route("/")
 def home():
-    return "Hello World"
+    return render_template("index.html")
 
 @app.route("/playoff_average")
 def playoffs():
