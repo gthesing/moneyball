@@ -3,13 +3,10 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Moneyball</title>
 
     <!-- CSS -->
-    <link rel="stylesheet" href="../static/css/bootstrap.min.css" media="screen">
-    <link rel="stylesheet" type="text/css" href="../static/css/style.css"> 
+    <link rel="stylesheet" type="text/css" href="../css/style.css"> 
     
     <!-- Bootswatch -->
     <link href="https://stackpath.bootstrapcdn.com/bootswatch/3.4.1/sandstone/bootstrap.min.css" rel="stylesheet" integrity="sha384-MdGHxjbrV2GoFVHadLhX6S9c4u3zfMCjYWiJCd1qukSKYr5/WblrjNve58VRoYg4" crossorigin="anonymous">
@@ -18,43 +15,53 @@
     <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/4.5.0/d3.min.js"></script> -->
     <script src="http://d3js.org/d3.v3.min.js"></script>
 
-    <script src="../static/js/radar.js"></script>
+    <script src="../js/radar.js"></script>
 
 </head>
 
 
 <body>
- <!-- Start of navbar -->
- <nav class="navbar navbar-default">
-        <div class="container-fluid navbar-custom">
-  
-          <!-- Brand and toggle get grouped for better mobile display -->
-          <div class="row">
+<!-- Navbar -->
+    <nav class="navbar navbar-default">
+        <div class="container-fluid">
             <div class="navbar-header">
-              <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-                <span class="sr-only">Toggle Navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-              </button>
-              <div class="col-xs-9 phone-nav">
-              </div>
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#">Brand</a>
             </div>
-  
-            <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-              <ul class="nav navbar-nav navbar-right navbar-right-custom">
-                <li><a href="/">Home</a></li>
-                <li><a href="#chart_1">Logistic Regression</a></li>
-                <li><a href="/radar">Radar Graph</a></li>
-                <li><a href="#chart_3">Stats by Team</a></li>
-              </ul>
-            </div><!-- /.navbar-collapse -->
-          </div>
-        </div><!-- /.container-fluid -->
-      </nav>
-      <!-- End of navbar -->
+                <ul class="nav navbar-nav">
+                    <li class="active"><a href="#">Link <span class="sr-only">(current)</span></a></li>
+                    <li><a href="#">Link</a></li>
+                    <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Dropdown <span class="caret"></span></a>
+                    <ul class="dropdown-menu" role="menu">
+                        <li><a href="#">Action</a></li>
+                        <li><a href="#">Another action</a></li>
+                        <li><a href="#">Something else here</a></li>
+                        <li class="divider"></li>
+                        <li><a href="#">Separated link</a></li>
+                        <li class="divider"></li>
+                        <li><a href="#">One more separated link</a></li>
+                    </ul>
+                    </li>
+                </ul>
+                <form class="navbar-form navbar-left" role="search">
+                    <div class="form-group">
+                    <input type="text" class="form-control" placeholder="Search">
+                    </div>
+                    <button type="submit" class="btn btn-default">Submit</button>
+                </form>
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="#">Link</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
 
 <!-- Radar with Input -->
     <div class="container">
@@ -96,14 +103,10 @@
         </div>
     </div>
 
-    <!-- Start of footer -->
-    <footer class="footer navbar-fixed-bottom">
-            <div class="two-toned-footer-color"></div>
-    </footer>
-    <!-- End of footer -->
 
     <!-- JavaScript-->
-    <script type="text/javascript" src="../static/js/radar_script.js"></script>
+    <script type="text/javascript" src="../js/script.js"></script>
+    
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 

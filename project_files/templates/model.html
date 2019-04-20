@@ -36,7 +36,7 @@
           <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav navbar-right navbar-right-custom">
               <li><a href="/">Home</a></li>
-              <li><a href="/model">Logistic Regression</a></li>
+              <li><a href="#chart_1">Logistic Regression</a></li>
               <li><a href="/radar">Radar Graph</a></li>
               <li><a href="#chart_3">Stats by Team</a></li>
             </ul>
@@ -58,51 +58,9 @@
       <section class="row">
         <div class="col-md-12">
           <article class="description-content">
-            <a id="playoff"><h1 class="description-header">Playoff Bound?</h1></a>
+            <a id="model"><h1 class="description-header">Logistic Regression</h1></a>
             <hr class="description-hr"/>
-            <p>Enter your team's previous year's stats to see if they'll make it to the playoffs.</p>
-              <form class="form-inline">
-                  <div class="form-group">
-                    <h4>Runs Scored:</h4><input type="text" class="form-control" id="RS" placeholder="RS">            
-                    <h4>Runs Allowed:</h4><input type="text" class="form-control" id="RA" placeholder="RA">
-                    <h4>Wins:</h4><input type="text" class="form-control" id="W" placeholder="W">
-                    <h4>On-Base Percentage:</h4><input type="text" class="form-control" id="OBP" placeholder="OBP">
-                    <h4>Slugging Percentage:</h4><input type="text" class="form-control" id="SLG" placeholder="SLG">
-                    <p>Batting Average:</p><input type="text" class="form-control" id="BA" placeholder="BA">
-                    <button id="submit" type="submit" class="btn btn-default">Submit</button>
-                  </div> 
-              </form>
-           </article>
-        </div>
-      </section>
-    </div>
-    <div class="container">
-        <section class="row">
-          <div class="col-md-12">
-            <article class="description-content">
-              <a id="chart_1"><h1 class="description-header">Logistic Regression</h1></a>
-              <hr class="description-hr"/> 
-              <p>Description of Machine Learning and Graph of Loss</p>
-              <div id="plot"></div>
-            </article>
-          </div>
-        </section>
-      </div>
-    <div class="container">
-      <section class="row">
-        <div class="col-md-12">
-          <article class="description-content">
-            <a id="chart_3"><h1 class="description-header">Stats by Team</h1></a>
-            <hr class="description-hr"/>
-            <p>Select the team's stats you want to view over time.</p>
-            <p>Choose a Team:</p><select id="selDataset" onchange="getData(this.value)">
-                <option value="Rangers">Texas Rangers</option>
-                <option value="White Sox">New York White Sox</option>
-                <option value="Red Sox">Boston Red Sox</option>
-                <option value="Astros">Houston Astros</option>
-              </select>
-              <div class="chart_3"></div>
-          </article>
+            <p>We tried a few different models....</p>    
         </div>
       </section>
     </div>
