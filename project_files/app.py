@@ -37,7 +37,7 @@ session = Session(engine)
 
 @app.route("/")
 def home():
-    return "Hello World"
+    return render_template("index.html")
 
 def ValuePredictor(to_predict_list):
     to_predict = np.array(to_predict_list).reshape(1,12)

@@ -9,16 +9,16 @@ var RadarChart = {
     // Set default/initial chart configuration values
         var config = {
             radius: 5,
-            w: 450, 
-            h: 450, 
+            w: 600, 
+            h: 600, 
             factor: 1, 
             factorLegend: .85, 
-            levels: 4,
+            levels: 3,
             maxValue: 0,
             radians: 2 * Math.PI,
             opacityArea: 0.5,
             ToRight: 5,
-            TranslateX: 30,
+            TranslateX: 80,
             TranslateY: 30, 
             ExtraWidthX: 100,
             ExtraWidthY: 100,
@@ -40,21 +40,18 @@ var RadarChart = {
     // // // // // // // // // // // // // // // // // // // // 
 
     // Sets maxValue = the largest value in the provided data 
-        // config.maxValue = Math.max(config.maxValue, d3.max(d, i=>{
-        //     return d3.max(i.map(o=>{return o.value;}))
-        // }));
-
-        config.maxValue = 1;
+        config.maxValue = Math.max(config.maxValue, d3.max(d, i=>{
+            return d3.max(i.map(o=>{return o.value;}))
+        }));
 
     
-        var allAxes = (d[0].map((i,j)=>{return i.axis})); // Axis labels
+        var allAxes = (d[0].map((i,j)=>{return i.axis}));
         var total = allAxes.length;
         var radius = config.factor*Math.min(config.w/2, config.h/2);
         var Format = d3.format('%');
 
         d3.select(id).select('svg').remove();
 
-        // Chart container
         var g = d3.select(id)
             .append('svg')
             .attr('width', config.w + config.ExtraWidthX)
@@ -82,7 +79,6 @@ var RadarChart = {
                 .attr('transform', 'translate(' + (config.w/2-levelFactor) + ',' + (config.h/2-levelFactor) + ')');
         }
 
-        // Level labels (%) 
         for(var j=0; j<config.levels; j++){
             var levelFactor = config.factor*radius*((j+1)/config.levels);
             g.selectAll('.levels')
@@ -142,6 +138,8 @@ var RadarChart = {
                 });
             dataValues.push(dataValues[0]);
 
+            console.log(config.color);
+
             g.selectAll('.area')
                 .data([dataValues])
                 .enter()
@@ -187,7 +185,7 @@ var RadarChart = {
                 .attr('alt', j=>{return Math.max(j.value, 0)})
                 .attr('cx', (j,i)=>{
                     dataValues.push([
-                        config.w/2*(1-(parseFloat(Math.max(j.value, 0))/config.maxValue)*config.factor*Math.sin(i*config.radians/total)),
+                        config.w/2*(1-(parseFloat(Math.max(j.value, 0))/config.maxValue)*config.factor*Math.sin(i*offscreenBuffering.radians/total)),
                         config.h/2*(1-(parseFloat(Math.max(j.value, 0))/config.maxValue)*config.factor*Math.cos(i*config.radians/total))
                     ]);
                     return config.w/2*(1-(Math.max(j.value, 0)/config.maxValue)*config.factor*Math.sin(i*config.radians/total));
@@ -197,8 +195,8 @@ var RadarChart = {
                 })
                 .attr('data-id', j=>{return j.axis})
                 .style('fill', config.color(series)).style('fill-opacity', 0.9)
-                .on('mouseover', function(d){
-                    newX = parseFloat(d3.select(this).attr('cx'))-10;
+                .on('mouseover', d=>{
+                    newX = parseFloat(d3.select(this).attr('cs'))-10;
                     newY = parseFloat(d3.select(this).attr('cy'))-5;
 
                     tooltip
@@ -237,51 +235,6 @@ var RadarChart = {
                     .style('font-family', 'sans-serif')
                     .style('font-size', '13px');
         
-        // Initiate Legend
-        // Legend svg
-        var svg = d3.select('#radar-container')
-            .selectAll('svg')
-            .append('svg')
-            .attr('width', config.w+300)
-            .attr('height', config.h)
-
-        var legendTitle = svg.append('text')
-            .attr('class', 'title')
-            .attr('transform', 'translate(90,0)')
-            .attr('x', config.w-140)
-            .attr('y', 10)
-            .attr('font-size', '12px')
-            .attr('fill', '#404040')
-            .text('% of max performance stats');
-
-        // Initiate Legend 
-        var legend = svg.append('g')
-            .attr('class', 'legend')
-            .attr('height', 100)
-            .attr('width', 200)
-            .attr('transform', 'translate(90,20)');
-
-        // Create colour squares
-        legend.selectAll('rect')
-            .data(LegendLabels)
-            .enter()
-            .append('rect')
-            .attr('x', config.w-140)
-            .attr('y', (d,i)=>{return i *20;})
-            .attr('width', 10)
-            .attr('height', 10)
-            .style('fill', (d,i)=>{return config.color(i);});
-        
-        // Create text next to squares
-        legend.selectAll('text')
-            .data(LegendLabels)
-            .enter()
-            .append('text')
-            .attr('x', config.w-120)
-            .attr('y', (d,i)=>{return i*20 + 9;})
-            .attr('font-size', '11px')
-            .attr('fill', '#737373')
-            .text(d=>{return d;});
 
     }
 }
