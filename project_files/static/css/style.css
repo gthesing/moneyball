@@ -263,6 +263,21 @@ html {
     stroke-width: 2px;
   }
   
+  /* Style for Radar chart */
+#radar-container {
+  overflow: hidden;
+  margin-top: 0;
+  font-size: 14px;
+  font-family: "Helvetica Neue", Helvetica;
+}
+#radar-chart {
+  position: absolute;
+  /* top: 50px; */
+  left: 100px;
+}
+#radar-input-form {
+  margin-top: 40px;
+}
   
   /* ----FOOTER END---- */
   
