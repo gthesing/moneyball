@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <title>Moneyball</title>
+
+    <link rel="stylesheet" href="../static/css/bootstrap.min.css" media="screen">
+    <link rel="stylesheet" href="../static/css/styles.css" media="screen">
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+  </head>
+
+  <body>
+    <!-- Start of navbar -->
+    <nav class="navbar navbar-default">
+      <div class="container-fluid navbar-custom">
+
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="row">
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+              <span class="sr-only">Toggle Navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            <div class="col-xs-9 phone-nav">
+            </div>
+          </div>
+
+          <!-- Collect the nav links, forms, and other content for toggling -->
+          <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav navbar-right navbar-right-custom">
+              <li><a href="#chart_1">Logistic Regression</a></li>
+              <li><a href="#chart_2">Radar Graph</a></li>
+              <li><a href="#chart_3">Stats by Team</a></li>
+            </ul>
+          </div><!-- /.navbar-collapse -->
+        </div>
+      </div><!-- /.container-fluid -->
+    </nav>
+    <!-- End of navbar -->
+
+    <!-- Start of container -->
+    <div class="container">
+        <section class="row">
+          <div class="col-md-12">
+              <h1 class="description-title">Moneyball</h1> 
+          </div>
+        </section>
+    </div>
+    <div class="container">
+      <section class="row">
+        <div class="col-md-12">
+          <article class="description-content">
+            <a id="playoff"><h1 class="description-header">Playoff Bound?</h1></a>
+            <hr class="description-hr"/>
+            <p>Enter your team's previous year's stats to see if they'll make it to the playoffs.</p>
+              <form class="form-inline">
+                  <div class="form-group">
+                    <h4>Runs Scored:</h4><input type="text" class="form-control" id="RS" placeholder="RS">            
+                    <h4>Runs Allowed:</h4><input type="text" class="form-control" id="RA" placeholder="RA">
+                    <h4>Wins:</h4><input type="text" class="form-control" id="W" placeholder="W">
+                    <h4>On-Base Percentage:</h4><input type="text" class="form-control" id="OBP" placeholder="OBP">
+                    <h4>Slugging Percentage:</h4><input type="text" class="form-control" id="SLG" placeholder="SLG">
+                    <p>Batting Average:</p><input type="text" class="form-control" id="BA" placeholder="BA">
+                    <button id="submit" type="submit" class="btn btn-default">Submit</button>
+                  </div> 
+              </form>
+           </article>
+        </div>
+      </section>
+    </div>
+    <div class="container">
+        <section class="row">
+          <div class="col-md-12">
+            <article class="description-content">
+              <a id="chart_1"><h1 class="description-header">Logistic Regression</h1></a>
+              <hr class="description-hr"/> 
+              <p>Description of Machine Learning and Graph of Loss</p>
+              <div id="plot"></div>
+            </article>
+          </div>
+        </section>
+      </div>
+      <div class="container">
+        <section class="row">
+          <div class="col-md-12">
+            <article class="description-content">
+              <a id="chart_2"><h1 class="description-header">Radar Graph</h1></a>
+              <hr class="description-hr"/> 
+              <p>Description of radar chart</p>
+              <div id="radar-chart"></div>
+            </article>
+          </div>
+        </section>
+      </div>
+    <div class="container">
+      <section class="row">
+        <div class="col-md-12">
+          <article class="description-content">
+            <a id="chart_3"><h1 class="description-header">Stats by Team</h1></a>
+            <hr class="description-hr"/>
+            <p>Select the team's stats you want to view over time.</p>
+            <p>Choose a Team:</p><select id="selDataset" onchange="getData(this.value)">
+                <option value="Rangers">Texas Rangers</option>
+                <option value="White Sox">New York White Sox</option>
+                <option value="Red Sox">Boston Red Sox</option>
+                <option value="Astros">Houston Astros</option>
+              </select>
+              <div class="chart_3"></div>
+          </article>
+        </div>
+      </section>
+    </div>
+    <!-- End of container -->
+
+    <!-- Start of footer -->
+    <footer class="footer navbar-fixed-bottom">
+      <div class="two-toned-footer-color"></div>
+    </footer>
+    <!-- End of footer -->
+
+    <!-- jQuery CDN -->
+    <script src="https://d3js.org/d3.v5.min.js"></script>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3-annotation/1.12.1/d3-annotation.min.js"></script>
+    <script type='text/javascript' src='./../static/js/app.3.js'></script>
+    <script src="./../static/js/radar.js"></script>
+    <!-- Bootstrap CDN -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+  </body>
+
+</html>
