@@ -39,6 +39,15 @@ session = Session(engine)
 def home():
     return render_template("index.html")
 
+@app.route("/radar")
+def radar():
+    return render_template("radar.html")
+
+@app.route("/model")
+def home():
+    return render_template("model.html")
+
+
 def ValuePredictor(to_predict_list):
     to_predict = np.array(to_predict_list).reshape(1,12)
     loaded_model = pickle.load(open("Machine Learing/playoffs_logistic_regression_trained.pkl","rb"))
@@ -60,7 +69,7 @@ def result():
             
         return render_template("result.html",prediction=prediction)
 
-
+        
 
 @app.route("/playoff_average")
 def playoffs():
