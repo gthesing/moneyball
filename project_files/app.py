@@ -39,6 +39,14 @@ session = Session(engine)
 def home():
     return render_template("index.html")
 
+@app.route("/radar")
+def radar():
+    return render_template("radar.html")
+
+@app.route("/model")
+def home():
+    return render_template("model.html")
+
 @app.route("/playoff_average")
 def playoffs():
     #Averages for playoff teams by year
