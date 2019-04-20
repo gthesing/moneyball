@@ -44,7 +44,7 @@ def radar():
     return render_template("radar.html")
 
 @app.route("/model")
-def home():
+def model():
     return render_template("model.html")
 
 @app.route("/playoff_average")
