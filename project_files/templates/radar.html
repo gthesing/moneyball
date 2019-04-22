@@ -12,12 +12,11 @@
     <link rel="stylesheet" type="text/css" href="../static/css/style.css"> 
     
     <!-- Bootswatch -->
-    <link href="https://stackpath.bootstrapcdn.com/bootswatch/3.4.1/sandstone/bootstrap.min.css" rel="stylesheet" integrity="sha384-MdGHxjbrV2GoFVHadLhX6S9c4u3zfMCjYWiJCd1qukSKYr5/WblrjNve58VRoYg4" crossorigin="anonymous">
+    <!-- <link href="https://stackpath.bootstrapcdn.com/bootswatch/3.4.1/sandstone/bootstrap.min.css" rel="stylesheet" integrity="sha384-MdGHxjbrV2GoFVHadLhX6S9c4u3zfMCjYWiJCd1qukSKYr5/WblrjNve58VRoYg4" crossorigin="anonymous"> -->
 
     <!-- D3 -->
     <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/4.5.0/d3.min.js"></script> -->
     <script src="http://d3js.org/d3.v3.min.js"></script>
-
     <script src="../static/js/radar.js"></script>
 
 </head>
@@ -45,55 +44,68 @@
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
               <ul class="nav navbar-nav navbar-right navbar-right-custom">
-                <li><a href="/">Home</a></li>
-                <li><a href="#chart_1">Logistic Regression</a></li>
-                <li><a href="/radar">Radar Graph</a></li>
-                <li><a href="#chart_3">Stats by Team</a></li>
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/model">Logistic Regression</a></li>
+                    <li><a href="/radar">Radar Graph</a></li>
+                    <li><a href="/statsprogression">Stats Progression</a></li>
               </ul>
             </div><!-- /.navbar-collapse -->
           </div>
         </div><!-- /.container-fluid -->
-      </nav>
+ </nav>
       <!-- End of navbar -->
+      <div class="container">
+            <section class="row">
+              <div class="col-md-12">
+                  <h1 class="description-title">Moneyball</h1> 
+              </div>
+            </section>
+        </div>
 
-<!-- Radar with Input -->
+    <!-- Radar with Input -->
     <div class="container">
-        <div class="col-md-3 col-sm-3 col-xs-3" id="radar-input-form">
-            <div class="form-group">
-                <ul style="list-style-type:none" class="list-group">
-                    <li>
-                        <label for="runs-scored">Runs Scored</label>
-                        <input class="form-control" type="text" id="RS" placeholder="">
-                    </li>
-                    <li>
-                        <label for="runs-allowed">Runs Allowed</label>
-                        <input class="form-control" type="text" id="RA" placeholder="">
-                    </li>
-                    <li>
-                        <label for="batting-average">Batting Average</label>
-                        <input class="form-control" type="text" id="BA" placeholder="">
-                    </li>
-                    <li>
-                        <label for="on-base-percentage">On-Base Percentage</label>
-                        <input class="form-control" type="text" id="OBP" placeholder="">
-                    </li>
-                    <li>
-                        <label for="slugging">Slugging Percentage</label>
-                        <input class="form-control" type="text" id="SLG" placeholder="">
-                    </li>
-                    <li>
-                        <label for="wins">Wins</label>
-                        <input class="form-control" type="text" id="W" placeholder="">
-                    </li>
-                </ul>
+        <section class="row">
+            <div class="col-md-12">
+                <article class="description-content">
+                    <div class="col-md-3">                  
+                        <div class="form-group">
+                            <ul style="list-style-type:none" class="list-group">
+                                <li>
+                                    <label for="runs-scored">Runs Scored</label>
+                                    <input class="form-control" type="text" id="RS" placeholder="">
+                                </li>
+                                <li>
+                                    <label for="runs-allowed">Runs Allowed</label>
+                                    <input class="form-control" type="text" id="RA" placeholder="">
+                                </li>
+                                <li>
+                                    <label for="batting-average">Batting Average</label>
+                                    <input class="form-control" type="text" id="BA" placeholder="">
+                                </li>
+                                <li>
+                                    <label for="on-base-percentage">On-Base Percentage</label>
+                                    <input class="form-control" type="text" id="OBP" placeholder="">
+                                </li>
+                                <li>
+                                    <label for="slugging">Slugging Percentage</label>
+                                    <input class="form-control" type="text" id="SLG" placeholder="">
+                                </li>
+                                <li>
+                                    <label for="wins">Wins</label>
+                                    <input class="form-control" type="text" id="W" placeholder="">
+                                </li>
+                            </ul>
+                            <button id="btn" type="submit" class="btn btn-default">Plot</button>
+                        </div>
+                    </div>        
+                    <div class="col-md-9">
+                        <div id="radar-container">
+                            <div id="radar-chart"></div>
+                        </div>    
+                    </div>    
+                </article>      
             </div>
-            <button id="btn" type="submit" class="btn btn-default">Plot</button>
-        </div>
-        <div class="col-md-9 col-sm-9 col-xs-9">
-            <div id="radar-container">
-                <div id="radar-chart"></div>
-            </div>
-        </div>
+        </section>    
     </div>
 
     <!-- Start of footer -->
@@ -105,8 +117,8 @@
     <!-- JavaScript-->
     <script type="text/javascript" src="../static/js/radar_script.js"></script>
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    
 </body>
 
 </html>
