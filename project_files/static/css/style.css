@@ -9,10 +9,9 @@ html {
   
   body {
     /* Positioning */
-    overflow: hidden;
     margin-bottom: 150px;
     font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
-    font-size: 14px;
+    font-size: 18px;
     margin: 0;
     background-color: #ededed;
   }
@@ -263,21 +262,6 @@ html {
     stroke-width: 2px;
   }
   
-  /* Style for Radar chart */
-#radar-container {
-  overflow: hidden;
-  margin-top: 0;
-  font-size: 14px;
-  font-family: "Helvetica Neue", Helvetica;
-}
-#radar-chart {
-  position: absolute;
-  /* top: 50px; */
-  left: 100px;
-}
-#radar-input-form {
-  margin-top: 40px;
-}
   
   /* ----FOOTER END---- */
   
