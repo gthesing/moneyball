@@ -58,7 +58,7 @@ def ValuePredictor(to_predict_list):
 def result():
     if request.method == 'POST':
         to_predict_list = request.form.to_dict()
-        to_predict_list=list(to_predict_list.values())
+        to_predict_list= list(to_predict_list.values())
         to_predict_list = list(map(int, to_predict_list))
         result = ValuePredictor(to_predict_list)
         
@@ -69,7 +69,7 @@ def result():
             
         return render_template("result.html",prediction=prediction)
 
-        
+
 
 @app.route("/playoff_average")
 def playoffs():
@@ -96,8 +96,7 @@ def playoffs():
 def alltime():
     #All time Averages for a playoff making team
     results = db.session.query(func.avg(Baseball_Data.RS),func.avg(Baseball_Data.RA),\
-    func.avg(Baseball_Data.W),func.avg(Baseball_Data.OBP),func.avg(Baseball_Data.SLG),func.avg(Baseball_Data.BA)).\
-    filter(Baseball_Data.Playoffs == 1).all()
+    func.avg(Baseball_Data.W),func.avg(Baseball_Data.OBP),func.avg(Baseball_Data.SLG),func.avg(Baseball_Data.BA)).filter(Baseball_Data.Playoffs == 1).all()
 
     baseball_data = []
     for result in results:
@@ -138,12 +137,30 @@ def playoff_count():
 
     baseball_data = []
     for result in results:
-        baseball_dict = {}
-        baseball_dict["Team"] = result[0]
-        baseball_dict["Playoff_Appearances"] = result[1]
-        baseball_data.append(baseball_dict)
+        if result[1] != 0:
+            baseball_dict = {}
+            baseball_dict["Team"] = result[0]
+            baseball_dict["Playoff_Appearances"] = result[1]
+            baseball_data.append(baseball_dict)
+        else:
+            continue
 
     return jsonify(baseball_data)
+
+# @app.route("/worldseries")
+# def worldseries():
+#     results = db.session.query(Baseball_Data.Team,func.sum(Baseball_Data.RankPlayoffs)).\
+#     filter(Baseball_Data.RankPlayoffs == 1).group_by(Baseball_Data.Team).all()
+
+#     baseball_data = []
+#     for result in results:
+#         baseball_dict = {}
+#         baseball_dict["Team"] = result[0]
+#         baseball_dict["WorldSeries_Wins"] = result[1]
+#         baseball_data.append(baseball_dict)
+
+#     return jsonify(baseball_data)
+
 
 @app.route("/stats/<stat>")
 def stats(stat):
@@ -157,18 +174,19 @@ def stats(stat):
     for result in results:
         baseball_dict = {}
         baseball_dict["Year"] = result[0]
+        baseball_dict["Stat"] = stat
         if stat == "RS":
-            baseball_dict[f"Average_{stat}"] = result[1]
+            baseball_dict["Average"] = result[1]
         elif stat == "RA":
-            baseball_dict[f"Average_{stat}"] = result[2]
+            baseball_dict["Average"] = result[2]
         elif stat == "W":
-            baseball_dict[f"Average_{stat}"] = result[3]
+            baseball_dict["Average"] = result[3]
         elif stat == "OBP":
-            baseball_dict[f"Average_{stat}"] = result[4]
+            baseball_dict["Average"] = result[4]
         elif stat == "SLG":
-            baseball_dict[f"Average_{stat}"] = result[5]
+            baseball_dict["Average"] = result[5]
         elif stat == "BA":
-            baseball_dict[f"Average_{stat}"] = result[6]
+            baseball_dict["Average"] = result[6]
         else:
             baseball_dict["ERROR"] = f"No stat of type: {stat}"
 
