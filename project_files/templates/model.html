@@ -58,18 +58,89 @@
       <section class="row">
         <div class="col-md-12">
           <article class="description-content">
-            <a id="model"><h1 class="description-header">Logistic Regression</h1></a>
+            <h1 class="description-header">What Model Are We Using?</h1>
             <hr class="description-hr"/>
-            <p>We tried a few different models....</p>    
+            <h2>Exploring the Data</h2>
+            <h3>Cleaned Kaggle dataset that looked like this:</h3>
+            <br>
+              <table style="width:100%", border="1">
+                    <tr> 
+                      <th class="text-center">Team</th> 
+                      <th class="text-center">League</th> 
+                      <th class="text-center">Year</th> 
+                      <th class="text-center">RS</th> 
+                      <th class="text-center">RA</th> 
+                      <th class="text-center">W</th> 
+                      <th class="text-center">OBP</th>
+                      <th class="text-center">SLG</th>
+                      <th class="text-center">BA</th>
+                      <th class="text-center">Playoffs</th>
+                    </tr> 
+                    <tr> 
+                      <td align="center">ARI</td> 
+                      <td align="center">NL</td> 
+                      <td align="center">2012</td>
+                      <td align="center">734</td> 
+                      <td align="center">688</td> 
+                      <td align="center">81</td> 
+                      <td align="center">.328</td> 
+                      <td align="center">.418</td> 
+                      <td align="center">.259</td> 
+                      <td align="center">0</td> 
+                    </tr> 
+                    <tr> 
+                        <td align= "center">ATL</td> 
+                        <td align="center">NL</td>
+                        <td align="center">2012</td> 
+                        <td align="center">700</td> 
+                        <td align="center">600</td> 
+                        <td align="center">94</td> 
+                        <td align="center">.32</td> 
+                        <td align="center">.389</td> 
+                        <td align="center">.247</td> 
+                        <td align="center">1</td> 
+                    </tr>
+                    <tr> 
+                        <td align="center">BAL</td> 
+                        <td align="center">AL</td> 
+                        <td align="center">2012</td>
+                        <td align="center">712</td> 
+                        <td align="center">705</td> 
+                        <td align="center">93</td> 
+                        <td align="center">.311</td> 
+                        <td align="center">.417</td> 
+                        <td align="center">.247</td> 
+                        <td align="center">1</td> 
+                    </tr>
+                  </table>  
+                  <br> 
+                  <div> *****Histogram of Data*******</div>
+                  <br>
+            <h2>Testing Various Models</h2>
+            <ul>
+              <li style= font-size:20px>Linear Model with Sklearn</li>
+              <li style= font-size:20px>Sequential Model with Keras</li>
+              <li style= font-size:20px>Logistic Regression with Sklearn</li>
+            </ul>
+            <br>
+            <h2>Results</h2>
+            <h4>The linear model was too simple and was too simple and resulted in an MSE > .60 and an r2 < .35.</h4>
+            <h4>The sequential model was too complex and was overfitting the model very quickly because of our limited data set. 
+              We were able to get this model's loss down to .22 and the accuracy to .89, however it required reducing the number of 
+              layers to 1 and the number of nodes to 10.</h4>
+            <h4>The lgoistic regerssion model seemed to be the best fit and we achieved an MSE < .14 and an r2 > .86.</h4>
+             <br>
+             <h2>Implementation of the Model</h2> 
+
         </div>
       </section>
     </div>
     <!-- End of container -->
 
     <!-- Start of footer -->
-    <footer class="footer navbar-fixed-bottom">
+    <!-- <footer class="footer navbar-fixed-bottom">
       <div class="two-toned-footer-color"></div>
-    </footer>
+    </footer> -->
     <!-- End of footer -->
 
     <!-- jQuery CDN -->
