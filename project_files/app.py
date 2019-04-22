@@ -47,6 +47,10 @@ def radar():
 def model():
     return render_template("model.html")
 
+@app.route("/statsprogression")
+def statsprogression():
+    return render_template("statsprogression.html")    
+
 @app.route("/playoff_average")
 def playoffs():
     #Averages for playoff teams by year
