@@ -35,10 +35,10 @@
           <!-- Collect the nav links, forms, and other content for toggling -->
           <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav navbar-right navbar-right-custom">
-              <li><a href="/">Home</a></li>
-              <li><a href="/model">Logistic Regression</a></li>
-              <li><a href="/radar">Radar Graph</a></li>
-              <li><a href="/statsprogression">Stats Progression</a></li>
+                <li><a href="/">Home</a></li>
+                <li><a href="/model">Logistic Regression</a></li>
+                <li><a href="/radar">Radar Graph</a></li>
+                <li><a href="/statsprogression">Stats Progression</a></li>
             </ul>
           </div><!-- /.navbar-collapse -->
         </div>
@@ -55,38 +55,23 @@
         </section>
     </div>
     <div class="container">
-      <section class="row">
-        <div class="col-md-12">
-          <article class="description-content">
-            <a id="playoff"><h1 class="description-header">Playoff Bound?</h1></a>
-            <hr class="description-hr"/>
-            <p>Enter your team's previous year's stats to see if they'll make it to the playoffs.</p>
-              <form class="form-inline">
-                  <div class="form-group">
-                    <h4>Runs Scored:</h4><input type="text" class="form-control" id="RS" placeholder="RS">            
-                    <h4>Runs Allowed:</h4><input type="text" class="form-control" id="RA" placeholder="RA">
-                    <h4>Wins:</h4><input type="text" class="form-control" id="W" placeholder="W">
-                    <h4>Batting Average:</h4><input type="text" class="form-control" id="BA" placeholder="BA">
-                    <h4>*On-Base Percentage:</h4><input type="text" class="form-control" id="OBP" placeholder="OBP">
-                    <h4>*Slugging Percentage:</h4><input type="text" class="form-control" id="SLG" placeholder="SLG">
-                    <button id="submit" type="submit" class="btn btn-default">Submit</button>
-                  </div> 
-              </form>
-           <div>  
-            <h4>*On-Base Percentage (OBP) = (H+BB+HBP)/(AB+BB+HBP+SF)</h4>
-              <ul>
-                 <li>H = Hits</li>
-                 <li>BB = Walk</li>
-                 <li>HBP = Hit by Pitch</li>
-                 <li>AB = At-Bat</li>
-                  <li>SF = Sacrifice Fly</li>
-              </ul>
-            <h4>*Slugging Percentage (SLG) = Total bases / at-bats</h4>
-           </article>
-        </div>
-      </section>
-    </div>
-    
+        <section class="row">
+          <div class="col-md-12">
+            <article class="description-content">
+              <a id="chart_3"><h1 class="description-header">Stats Progression</h1></a>
+              <hr class="description-hr"/>
+              <p>Select the team's stats you want to view over time.</p>
+              <p>Choose a Team:</p><select id="selDataset" onchange="getData(this.value)">
+                  <option value="Rangers">Texas Rangers</option>
+                  <option value="White Sox">New York White Sox</option>
+                  <option value="Red Sox">Boston Red Sox</option>
+                  <option value="Astros">Houston Astros</option>
+                </select>
+                <div class="chart_3"></div>
+            </article>
+          </div>
+        </section>
+      </div>
     <!-- End of container -->
 
     <!-- Start of footer -->

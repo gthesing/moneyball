@@ -70,6 +70,9 @@ def result():
         return render_template("result.html",prediction=prediction)
 
 
+@app.route("/statsprogression")
+def statsprogression():
+    return render_template("statsprogression.html")    
 
 @app.route("/playoff_average")
 def playoffs():
