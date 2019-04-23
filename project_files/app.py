@@ -56,18 +56,22 @@ def ValuePredictor(to_predict_list):
 
 @app.route('/result',methods = ['POST'])
 def result():
-    if request.method == 'POST':
-        to_predict_list = request.form.to_dict()
-        to_predict_list= list(to_predict_list.values())
-        to_predict_list = list(map(int, to_predict_list))
-        result = ValuePredictor(to_predict_list)
+    data = request.form['form-inline']
+    console.log(data)
+    return(data)
+    return jsonify(data)
+    # if request.method == 'POST':
+    #     to_predict_list = request.form.to_dict()
+    #     to_predict_list= list(to_predict_list.values())
+    #     to_predict_list = list(map(int, to_predict_list))
+    #     result = ValuePredictor(to_predict_list)
         
-        if int(result)==1:
-            prediction='Makes Playoffs'
-        else:
-            prediction='Misses Playoffs'
+    #     if int(result)==1:
+    #         prediction='Makes Playoffs'
+    #     else:
+    #         prediction='Misses Playoffs'
             
-        return render_template("result.html",prediction=prediction)
+    #     return render_template("result.html",prediction=prediction)
 
 
 @app.route("/statsprogression")
@@ -191,7 +195,7 @@ def stats(stat):
         elif stat == "BA":
             baseball_dict["Average"] = result[6]
         else:
-            baseball_dict["ERROR"] = f"No stat of type: {stat}"
+            baseball_dict["ERROR"] = "No stat of this type"
 
         baseball_data.append(baseball_dict)
     return jsonify(baseball_data)
