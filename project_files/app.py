@@ -35,8 +35,30 @@ Base.prepare(db.engine, reflect=True)
 Baseball_Data = Base.classes.baseball
 session = Session(engine)
 
-@app.route("/")
-def home():
+@app.route("/", methods=["GET", "POST"])
+def send():
+    if request.method == "POST":
+        print(request.__dict__)
+        RS = request.form["RS"]
+        RA = request.form["RA"]
+        W = request.form["W"]
+        BA = request.form["BA"]
+        OBP = request.form["OBP"]
+        SLG = request.form["SLG"]
+
+
+        form_data = {
+        int(RS),
+        int(RA),
+        int(W),
+        int(BA),
+        int(OBP),
+        int(SLG)
+
+        }
+        print(form_data)
+        return "Thanks for the form data!"
+
     return render_template("index.html")
 
 @app.route("/radar")
