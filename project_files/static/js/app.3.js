@@ -2,7 +2,7 @@
 // Submit Button handler
 function handleSubmit() {
   // Prevent the page from refreshing
-  d3.event.preventDefault();
+//   d3.event.preventDefault();
 
   // Select the input value from the form
   var RS = d3.select("#RS").node().value;
