@@ -3,6 +3,7 @@ import numpy as np
 import pandas as pd
 import sqlalchemy
 import pymysql
+import pickle
 pymysql.install_as_MySQLdb()
 
 from flask_sqlalchemy import SQLAlchemy
@@ -20,7 +21,6 @@ from flask import (
 
 app = Flask(__name__)
 
-
 # establish connection
 app.config["SQLALCHEMY_DATABASE_URI"] = os.environ.get('DATABASE_URL','')  or "sqlite:///baseball.sqlite"
 engine = create_engine("sqlite:///baseball.sqlite")
@@ -35,10 +35,31 @@ Base.prepare(db.engine, reflect=True)
 Baseball_Data = Base.classes.baseball
 session = Session(engine)
 
-@app.route("/", methods=["GET", "POST"])
+prediction= []
+x= []
+
+
+def ValuePredictor(form_data):
+    to_predict = np.array(form_data).reshape(1,6)
+    with open("playoffs_logistic_regression_trained.pkl", 'rb') as file:  
+        pickle_model = pickle.load(file)   
+    result = pickle_model.predict(to_predict)
+    
+    if int(result)==1:
+        prediction= "Your Team is Likely to Make the Playoffs!"
+    elif int(result)==0:
+        prediction='Not this Year!'
+    else:
+        prediction='Enter the data below'
+    print(result)
+    return (prediction)
+
+
+@app.route("/", methods=['POST', 'GET'])
 def send():
+    x= " "
+    form_data = []
     if request.method == "POST":
-        print(request.__dict__)
         RS = request.form["RS"]
         RA = request.form["RA"]
         W = request.form["W"]
@@ -46,20 +67,10 @@ def send():
         OBP = request.form["OBP"]
         SLG = request.form["SLG"]
 
-
-        form_data = {
-        int(RS),
-        int(RA),
-        int(W),
-        int(BA),
-        int(OBP),
-        int(SLG)
-
-        }
-        print(form_data)
-        return "Thanks for the form data!"
-
-    return render_template("index.html")
+        form_data = [int(RS),int(RA),int(W),float(BA),float(OBP),float(SLG)]
+        print (form_data)
+        x = ValuePredictor(form_data)
+    return render_template('index.html', variable = x)  
 
 @app.route("/radar")
 def radar():
@@ -68,33 +79,6 @@ def radar():
 @app.route("/model")
 def model():
     return render_template("model.html")
-
-
-def ValuePredictor(to_predict_list):
-    to_predict = np.array(to_predict_list).reshape(1,12)
-    loaded_model = pickle.load(open("Machine Learing/playoffs_logistic_regression_trained.pkl","rb"))
-    result = loaded_model.predict(to_predict)
-    return result[0]
-
-@app.route('/result',methods = ['POST'])
-def result():
-    data = request.form['form-inline']
-    console.log(data)
-    return(data)
-    return jsonify(data)
-    # if request.method == 'POST':
-    #     to_predict_list = request.form.to_dict()
-    #     to_predict_list= list(to_predict_list.values())
-    #     to_predict_list = list(map(int, to_predict_list))
-    #     result = ValuePredictor(to_predict_list)
-        
-    #     if int(result)==1:
-    #         prediction='Makes Playoffs'
-    #     else:
-    #         prediction='Misses Playoffs'
-            
-    #     return render_template("result.html",prediction=prediction)
-
 
 @app.route("/statsprogression")
 def statsprogression():
