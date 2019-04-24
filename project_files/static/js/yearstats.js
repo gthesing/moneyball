@@ -1,13 +1,13 @@
 // Define SVG area dimensions
-var svgWidth = 960;
-var svgHeight = 550;
+var svgWidth = 1300;
+var svgHeight = 700;
 
 // Define the chart's margins as an object
 var margin = {
   top: 140,
   right: 80,
   bottom: 140,
-  left: 80
+  left: 120
 };
 
 // Define dimensions of the chart area
@@ -37,7 +37,7 @@ function buildPlot(stat){
         statsData.forEach(function(data) {
             data.Year = parseTime(data.Year);
             data.Average = +data.Average;
-            console.log(data.Year);
+            // console.log(data.Year);
         });
 
         // Configure a time scale with a range between 0 and the chartWidth
@@ -48,7 +48,7 @@ function buildPlot(stat){
         // Configure a linear scale with a range between the chartHeight and 0
         var yLinearScale = d3.scaleLinear()
             .range([chartHeight, 0])
-            .domain([0, d3.max(statsData, data => data.Average)]);
+            .domain([.99*(d3.min(statsData, data => data.Average)), d3.max(statsData, data => data.Average)]);
 
         // Create two new functions passing the scales in as arguments
         var bottomAxis = d3.axisBottom(xTimeScale);
@@ -66,17 +66,19 @@ function buildPlot(stat){
             // .style("fill","none")
             .attr("d", drawLine(statsData))
             .attr("stroke","black")
-            .attr("stroke-width", "1")
+            .attr("stroke-width", "2")
             .attr("fill", "none")
             .classed("line", true);
         // Append an SVG group element to the SVG area, create the left axis inside of it
         chartGroup.append("g")
             .classed("axis", true)
+            .attr("stroke-width", "2")
             .call(leftAxis);
 
         // Append an SVG group element to the SVG area, create the bottom axis inside of it
         chartGroup.append("g")
             .classed("axis", true)
+            .attr("stroke-width", "2")
             .attr("transform", "translate(0, " + chartHeight + ")")
             .call(bottomAxis);
 
@@ -131,7 +133,13 @@ function buildPlot(stat){
 
     })
 };
-buildPlot("BA");
+
+document.getElementById("selDataset").onchange = function() {newPlot()};
+
+function newPlot(){
+    var stats = d3.select("#selDataset").node().value;
+    buildPlot(stats);
+}
 
 // // Submit Button handler
 // function handleSubmit() {
