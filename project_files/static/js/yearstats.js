@@ -14,23 +14,34 @@ var margin = {
 var chartWidth = svgWidth - margin.left - margin.right;
 var chartHeight = svgHeight - margin.top - margin.bottom;
 
-// Select body, append SVG area to it, and set its dimensions
-var svg = d3.select("body")
-  .append("svg")
-  .attr("width", svgWidth)
-  .attr("height", svgHeight);
+// // Select body, append SVG area to it, and set its dimensions
+// var svg = d3.select("body")
+//   .append("svg")
+//   .attr("width", svgWidth)
+//   .attr("height", svgHeight);
 
-// Append a group area, then set its margins
-var chartGroup = svg.append("g")
-  .attr("transform", `translate(${margin.left}, ${margin.top})`);
+// // Append a group area, then set its margins
+// var chartGroup = svg.append("g")
+//   .attr("transform", `translate(${margin.left}, ${margin.top})`);
 
-// Configure a parseTime function which will return a new Date object from a string
-var parseTime = d3.timeParse("%Y");
+// // Configure a parseTime function which will return a new Date object from a string
+// var parseTime = d3.timeParse("%Y");
 
 
 function buildPlot(stat){
-    // Load data
     var statURL = "/stats/" + stat;
+    // Select body, append SVG area to it, and set its dimensions
+    var svg = d3.select("body")
+    .append("svg")
+    .attr("width", svgWidth)
+    .attr("height", svgHeight);
+
+    // Append a group area, then set its margins
+    var chartGroup = svg.append("g")
+    .attr("transform", `translate(${margin.left}, ${margin.top})`);
+
+    // Configure a parseTime function which will return a new Date object from a string
+    var parseTime = d3.timeParse("%Y");
     d3.json(statURL).then(function(statsData) {
 
         // Format the date and cast the miles value to a number
@@ -138,21 +149,6 @@ document.getElementById("selDataset").onchange = function() {newPlot()};
 
 function newPlot(){
     var stats = d3.select("#selDataset").node().value;
+    d3.select("svg").remove();
     buildPlot(stats);
 }
-
-// // Submit Button handler
-// function handleSubmit() {
-//     // Prevent the page from refreshing
-//     d3.event.preventDefault();
-  
-//     // Select the input value from the form
-//     var stat = d3.select("#selDataset").node().value;
-//     console.log(stat);
-  
-//     // clear the input value
-//     d3.select("#selDataset").node().value = "";
-  
-//     // Build the plot with the new year
-//     buildPlot(stat);
-//   }
