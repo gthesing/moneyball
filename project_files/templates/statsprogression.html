@@ -58,16 +58,18 @@
         <section class="row">
           <div class="col-md-12">
             <article class="description-content">
-              <a id="chart_3"><h1 class="description-header">Stats Progression</h1></a>
+              <a id="chart_3"><h1 class="description-header">Playoff Stats Through the Years</h1></a>
               <hr class="description-hr"/>
-              <p>Select the team's stats you want to view over time.</p>
-              <p>Choose a Team:</p><select id="selDataset" onchange="getData(this.value)">
-                  <option value="Rangers">Texas Rangers</option>
-                  <option value="White Sox">New York White Sox</option>
-                  <option value="Red Sox">Boston Red Sox</option>
-                  <option value="Astros">Houston Astros</option>
+              <p>Select a stat for a playoff making team you would like to see over time.</p>
+              <p>Choose a Stat:</p><select id="selDataset" onchange="this.form.submit()">
+                  <option value="RS">Runs Scored</option>
+                  <option value="RA">Runs Allowed</option>
+                  <option value="W">Wins</option>
+                  <option value="BA">Batting Average</option>
+                  <option value="OBP">On Base Percentage</option>
+                  <option value="SLG">Slugging Percentage</option>
                 </select>
-                <div class="chart_3"></div>
+                <div class="chart_3" id = "chart_3"></div>
             </article>
           </div>
         </section>
@@ -86,6 +88,10 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/d3-annotation/1.12.1/d3-annotation.min.js"></script>
     <script type='text/javascript' src='./../static/js/app.3.js'></script>
     <script src="./../static/js/radar.js"></script>
+    
+    <!-- JavaScript -->
+    <script type="text/javascript" src="../static/js/yearstats.js"></script>
+
     <!-- Bootstrap CDN -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
   </body>
