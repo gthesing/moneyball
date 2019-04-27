@@ -105,11 +105,56 @@ def playoffs():
 
     return jsonify(baseball_data)
 
+@app.route("/all_stats_hist")
+def histdata():
+    results = db.session.query(Baseball_Data.RS,Baseball_Data.RA,Baseball_Data.W,Baseball_Data.OBP,\
+        Baseball_Data.SLG,Baseball_Data.BA).all()
+
+    baseball_data = []
+    RS = []
+    RA = []
+    W = [] 
+    OBP = []
+    SLG = []
+    BA = []
+
+    for result in results:
+        RS.append(result[0])
+        RA.append(result[1])
+        W.append(result[2])
+        OBP.append(result[3])
+        SLG.append(result[4])
+        BA.append(result[5])
+
+    baseball_dict = {'RS': RS, 'RA': RA, 'W': W, 'OBP': OBP, 'SLG': SLG, 'BA': BA}
+    baseball_data.append(baseball_dict)
+
+    return jsonify(baseball_data)
+
 @app.route("/alltime_playoff")
 def alltime():
     #All time Averages for a playoff making team
     results = db.session.query(func.avg(Baseball_Data.RS),func.avg(Baseball_Data.RA),\
     func.avg(Baseball_Data.W),func.avg(Baseball_Data.OBP),func.avg(Baseball_Data.SLG),func.avg(Baseball_Data.BA)).filter(Baseball_Data.Playoffs == 1).all()
+
+    baseball_data = []
+    for result in results:
+        baseball_dict = {}
+        baseball_dict["RS"] = result[0]
+        baseball_dict["RA"] = result[1]
+        baseball_dict["W"] = result[2]
+        baseball_dict["OBP"] = result[3]
+        baseball_dict["SLG"] = result[4]
+        baseball_dict["BA"] = result[5]
+        baseball_data.append(baseball_dict)
+
+    return jsonify(baseball_data)
+
+@app.route("/alltime_max")
+def max_vals():
+    results = db.session.query(func.max(Baseball_Data.RS),func.max(Baseball_Data.RA),\
+        func.max(Baseball_Data.W),func.max(Baseball_Data.OBP),func.max(Baseball_Data.SLG),\
+            func.max(Baseball_Data.BA)).all()
 
     baseball_data = []
     for result in results:

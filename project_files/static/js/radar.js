@@ -22,7 +22,8 @@ var RadarChart = {
             TranslateY: 30, 
             ExtraWidthX: 100,
             ExtraWidthY: 100,
-            color: d3.scale.category10()
+            color: d3.scale.category10(),
+            LegendLabels: '',
         };
 
     // Replace default values with any supplied at function call
@@ -177,7 +178,6 @@ var RadarChart = {
 
         series=0;
 
-
         d.forEach((y,x)=> {
             g.selectAll('.nodes')
                 .data(y).enter()
@@ -263,7 +263,7 @@ var RadarChart = {
 
         // Create colour squares
         legend.selectAll('rect')
-            .data(LegendLabels)
+            .data(config.LegendLabels)
             .enter()
             .append('rect')
             .attr('x', config.w-140)
@@ -274,7 +274,7 @@ var RadarChart = {
         
         // Create text next to squares
         legend.selectAll('text')
-            .data(LegendLabels)
+            .data(config.LegendLabels)
             .enter()
             .append('text')
             .attr('x', config.w-120)

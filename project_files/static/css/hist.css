@@ -1,0 +1,48 @@
+.active {
+    font-weight: bold;
+    fill: navy;
+    transition: fill 0.3s ease-out;
+    text-anchor: start
+}
+  
+.inactive {
+    font-weight: lighter;
+    fill: #c9c9c9;
+    transition: fill 0.3s ease-out;
+    text-anchor: start;
+}
+
+.inactive:hover {
+    fill: #000;
+    cursor: pointer;
+}
+
+.tooltip {
+    padding: 6px;
+    font-size: 12px;
+    line-height: 1;
+    line-height: 1.5em;
+    color: red;
+    text-align: center;
+    text-transform: capitalize;
+    background: rgba(0, 0, 0, 0.8);
+    border-radius: 4px;
+}
+
+.bar {
+    fill: navy;
+}
+
+.bar:hover {
+    fill: rgb(8, 127, 167);
+}
+
+#hist {
+    border-style: solid;
+    border-width: 0.5px;
+}
+
+.bar-label {
+    text-anchor: middle;
+    /* text-align: center; */
+}
