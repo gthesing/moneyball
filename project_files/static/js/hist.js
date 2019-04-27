@@ -183,15 +183,15 @@ d3.json('/all_stats_hist').then(function(data){
     
     xLabelsGroup = createXLabels(xLabelsGroup);
     
-    var toolTip = d3.tip()
-            .attr('class', 'd3-tip')
-            .direction('e')
-            .offset([0,5])
-            .html(d=>{return (`${d.freq}`)});
+    // var toolTip = d3.tip()
+    //         .attr('class', 'd3-tip')
+    //         .direction('e')
+    //         .offset([0,5])
+    //         .html(d=>{return (`${d.freq}`)});
 
-    barGroup.call(toolTip);
-    barGroup.on('mouseenter', d=>{toolTip.show(d);});
-    barGroup.on('mouseleave', d=>{toolTip.hide(d);});
+    // barGroup.call(toolTip);
+    // barGroup.on('mouseenter', d=>{toolTip.show(d);});
+    // barGroup.on('mouseleave', d=>{toolTip.hide(d);});
 
 
     // UPDATING
