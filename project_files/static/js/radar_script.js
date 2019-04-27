@@ -42,6 +42,31 @@ d3.json('/alltime_playoff', function(playoff_data){
         // Function call; give descriptive id names to each
         RadarChart.draw('#radar-chart', defaultData, newConfig);
 
+        // NEW
+
+        //SVG setup 
+        var svggWidth = 900;
+        var svggHeight = 500;
+
+        var marginn = {
+            top: 50,
+            right: 50,
+            bottom: 3000,
+            left: 100
+        };
+
+        var svgg = d3.select('#buffer')
+                .append('svg')
+                .attr('width', svggWidth)
+                .attr('height', svggHeight);
+
+        var chartGroup = svgg.append('g')
+            .attr('transform', `translate(${marginn.left}, ${marginn.top})`)
+            .attr('id', 'chartGroup');
+
+        // END NEW
+
+
         // Updating the radar chart with new data
         var submit = d3.select('#btn');
 
